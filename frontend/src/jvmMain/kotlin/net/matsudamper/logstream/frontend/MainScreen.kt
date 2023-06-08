@@ -109,7 +109,11 @@ public fun MainScreen(
                                 uiState.listener.onClickStartServerButton()
                             },
                         ) {
-                            Icon(imageVector = Icons.Default.PlayArrow, contentDescription = "Start Server")
+                            Icon(
+                                imageVector = Icons.Default.PlayArrow,
+                                tint = Color.Green,
+                                contentDescription = "Start Server",
+                            )
                         }
                     } else {
                         IconButton(
