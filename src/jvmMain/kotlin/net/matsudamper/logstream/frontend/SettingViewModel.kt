@@ -55,6 +55,13 @@ public class SettingViewModel(
 
             override fun onClickCaKeyGenerateButton() {
                 launch {
+                    if (File(Constant.keyFileName).exists()) {
+                        rootNavController.dialog(
+                            title = "Key Generate Error",
+                            message = "Key file already exists.",
+                        )
+                        return@launch
+                    }
                     val keyStore = KeyUtil.createCaKeyStore(Constant.keyAlias, Constant.keyPass)
                     keyStore.store(File(Constant.keyFileName).outputStream(), Constant.filePass.toCharArray())
                     rootStore.setConfig {
